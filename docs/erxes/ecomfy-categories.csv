@@ -1,0 +1,38 @@
+﻿code,name,parent code
+EC,eComfy store,
+EC-MONTESSORI,Монтессори,EC
+EC-MONTESSORI-1,Эвлүүлдэг тоглоом,EC-MONTESSORI
+EC-MONTESSORI-2,Гарын жижиг булчин,EC-MONTESSORI
+EC-MONTESSORI-3,"Сэтгэхүй, анхаарал",EC-MONTESSORI
+EC-MONTESSORI-4,Дүрд тоглох,EC-MONTESSORI
+EC-MONTESSORI-5,"Үсэг, тоо",EC-MONTESSORI
+EC-MONTESSORI-6,Олуулаа тоглох,EC-MONTESSORI
+EC-MONTESSORI-7,"Зураг, гар урлал",EC-MONTESSORI
+EC-MONTESSORI-8,Бусад,EC-MONTESSORI
+EC-TOYS,Тоглоом,EC
+EC-TOYS-1,Чихмэл,EC-TOYS
+EC-TOYS-2,"Лего, фигур",EC-TOYS
+EC-TOYS-3,Хөлөгт тоглоом,EC-TOYS
+EC-TOYS-4,Хөгжим,EC-TOYS
+EC-TOYS-5,Пазл,EC-TOYS
+EC-TOYS-6,Бусад,EC-TOYS
+EC-SCHOOL,"Сургууль, бичиг хэрэг",EC
+EC-SCHOOL-1,Сургалтын хэрэгсэл,EC-SCHOOL
+EC-SCHOOL-2,Ном,EC-SCHOOL
+EC-SCHOOL-3,Оюуны тоглоом,EC-SCHOOL
+EC-SCHOOL-4,Дасгал ажлын дэвтэр,EC-SCHOOL
+EC-SCHOOL-5,Бичиг хэрэг,EC-SCHOOL
+EC-DESK,"Хичээлийн ширээ, сандал",EC
+EC-DESK-1,Сандал,EC-DESK
+EC-DESK-2,Ширээ,EC-DESK
+EC-KAWAII,Kawaii,EC
+EC-KAWAII-1,"Гоёл, бусад",EC-KAWAII
+EC-KAWAII-2,Blind box,EC-KAWAII
+EC-KAWAII-3,"Наалт, дэвтэр",EC-KAWAII
+EC-GIFTS,Бэлэг,EC
+EC-GIFTS-1,Бэлгийн багц,EC-GIFTS
+EC-GIFTS-2,Шинэ жилийн аяга,EC-GIFTS
+EC-GIFTS-3,Хүүхдийн хувцас,EC-GIFTS
+EC-GIFTS-4,Ган аяга,EC-GIFTS
+EC-GIFTS-5,Бусад,EC-GIFTS
+EC-DELIVERY,Хүргэлт,EC
