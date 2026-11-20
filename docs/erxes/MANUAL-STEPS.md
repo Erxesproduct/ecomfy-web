@@ -48,3 +48,21 @@ Steps:
    `EC-<productId>-<variantId>` (the same id the website sends with every order line), unit price and price before
    sale in MNT, ages, skills, made-to-order flag.
 4. Spot-check 10 products (price, size) against ecomfy.mn.
+
+## 1.2 Payment (QPay)
+
+Zochil rule, word for word: «Та төлбөрөө 100% төлснөөр таны захиалга баталгаажна.» Zochil has QPay (qpay2, Khan) on, but
+its checkout status is not enabled. The website:
+
+- records the order in erxes first, then creates a QPay invoice with the erxes payment plugin (`generateInvoiceUrl`,
+  public). The customer pays on the erxes payment page and returns to `/order/<reference>`, which asks `invoicesCheck`
+  every 5 s.
+- never asks for money for an order staff cannot see. Pocket is not offered (its exposed credentials must be rotated
+  first, and it is not part of this brief).
+
+Steps:
+
+1. Get the shop's own QPay merchant credentials (`client_id`, `client_secret`, `invoice_code`) (open question 3).
+2. **Settings → Payments → Add → QPay (v2)**: enter them. Make a 100₮ test invoice in erxes.
+3. Copy the payment method's `_id` into Vercel as `ERXES_PAYMENT_IDS`.
+4. **Not yet tested** against a real QPay merchant. Do not call payments working until step 2 and 1.5 pass.
