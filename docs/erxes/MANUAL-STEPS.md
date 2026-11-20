@@ -77,3 +77,25 @@ the server) and writes it on the order. The receipt is issued in erxes by staff 
 2. Register for **PosAPI 3.0** (ebarimt.mn) and install the PosAPI service.
 3. **Settings → eBarimt**: PosAPI URL, TIN, district code, VAT switches; assign it to the website pipeline.
 4. For every paid order: issue the receipt once (goods + delivery fee) and send the lottery number.
+
+## 1.4 Delivery zones, fees and order statuses
+
+Website (done), from the Zochil delivery option, payment rule, delivery rule and terms:
+
+| Zochil | Website |
+| --- | --- |
+| Option «A-Б бүс», **8,000₮**, limit 200,000₮; area: north 7 буудал, west 5 шар, east Оффицерийн тойрог, south Зайсан | 8,000₮; **free when the goods come to more than 200,000₮** (exactly 200,000₮ still pays: «дээш»); area shown at checkout and on /info |
+| Payment rule: «Хүргэлт бүсээс хамааран **8,000₮–10,000₮**» | the 10,000₮ zone has no Zochil option: not offered online; outside A-Б the site asks to call 8878-8757 first (open question 1) |
+| Delivery rule: within 24 h of confirmation; cancelled at the door → the customer pays the delivery fee | shown at checkout, on /info and in the order note; agreed at checkout |
+| Terms: exchange within 12 h at the store, unopened and unused | required checkbox at checkout; /info; product page |
+| Countryside switch on, no option or fee | not offered online; call first (open question 2) |
+
+erxes:
+
+1. Import `docs/erxes/ecomfy-delivery.csv`: `EC-DELIVERY-AB` 8,000₮ and `EC-DELIVERY-FAR` 10,000₮ (**confirm the
+   area before using the second**).
+2. **Sales → Boards → «Онлайн захиалга» → pipeline «Вэбсайт»**, stages (as on the website):
+   Төлбөр хүлээгдэж байна → Баталгаажсан → Бэлдэж байна → Хүргэлтэд гарсан → Хүргэгдсэн, plus Цуцлагдсан.
+3. **Frontline → Forms → (order form) → Settings**: create a sales card in «Төлбөр хүлээгдэж байна» for every
+   submission. Staff move it to «Баталгаажсан» when the QPay invoice shows paid.
+4. Made-to-order products (desks): add the lead time to the card when confirming by phone (open question 5).
