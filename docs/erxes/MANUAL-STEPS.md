@@ -99,3 +99,41 @@ erxes:
 3. **Frontline → Forms → (order form) → Settings**: create a sales card in «Төлбөр хүлээгдэж байна» for every
    submission. Staff move it to «Баталгаажсан» when the QPay invoice shows paid.
 4. Made-to-order products (desks): add the lead time to the card when confirming by phone (open question 5).
+
+## 1.5 Test order from cart to receipt
+
+**Verified on a local production build:** `npm run test:order -- http://127.0.0.1:3021`: **all 30 checks passed**:
+empty cart, unknown product, numeric id, sold-out refused, more than the stock refused, 8,000₮ fee, free delivery over
+200,000₮, a variant priced by its own id, terms required (boolean only), district / khoroo / address, QPay accepted,
+transfer and unknown payment refused, company registry, phone, email, quantity limit, the browser's price ignored, same
+checkout key → same reference, honeypot, payment check 400 / 503. Without erxes the API answers `503 not_configured`;
+the checkout then shows the phone number and keeps the cart. `--send` was **not run** (env vars not set). No payment
+was made.
+
+Steps for the real test (authorized credentials only):
+
+1. **Frontline → Forms → Create** «Вэбсайт захиалга» with fields Нэр, Утас, Имэйл, Захиалга; copy the form id and the
+   field ids into `ERXES_ORDER_FORM_ID` / `ERXES_ORDER_FIELD_IDS`. Set `ERXES_API_URL`, `ERXES_PAYMENT_IDS`. Redeploy.
+2. `npm run test:order -- https://<production url> --send`: one order, two items.
+3. Pay the invoice only with QPay's test merchant or with explicit authorization for a real charge; check that
+   `/order/<reference>` shows «Төлбөр төлөгдлөө», move the card, issue the eBarimt, mark delivered, void the test.
+
+## Permissions (erxes)
+
+- Staff who handle orders: Sales (cards), Forms (submissions), Payments (view invoices), eBarimt (issue).
+- Only the owner: Settings → Payments, Settings → eBarimt, product import.
+- The website uses only public erxes mutations; it needs no admin token.
+
+---
+
+## Open questions for the shop
+
+1. **10,000₮ zone**: the payment rule says 8,000–10,000₮ by zone, but Zochil has only the A-Б option (8,000₮). Which
+   area is 10,000₮, and does the 200,000₮ free limit apply there?
+2. **Countryside**: the Zochil countryside switch is on, but there is no option. Fee and carrier for aimags?
+3. **QPay merchant**: Zochil's QPay checkout is not enabled. The shop's own QPay merchant?
+4. **Stock**: Zochil counts stock per product, so variants (sizes, colours) share one number. Real stock per variant?
+5. **Made-to-order lead time** for the 4 «Захиалгаар» products (desks, chairs).
+6. **TIN / PosAPI** for eBarimt.
+7. **Domain**: point ecomfy.mn at the new site when ready.
+8. **Exposed credentials**: rotate the Pocket credentials and the Facebook page token (see the warning at the top).
